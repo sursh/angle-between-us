@@ -1,4 +1,6 @@
+from math import radians, sin, cos, acos, sqrt, degrees, floor
 import pandas as pd
+import sys
 
 LOCATIONS_FILE = 'data/simplemaps_worldcities_basicv1.75/worldcities.csv'
 
@@ -8,11 +10,20 @@ class City():
     def __init__(self, user_input):
         self.user_input = user_input
 
-    def compute_sph_vector(self):
-        """ Express lat/long as spherical coordinates. """
-        # We're assuming a spherical earth, so don't need rho
-        self.phi = 90 - self.lat
-        self.theta = self.lng
+    def add_geo(self, latlong):
+        self.lat, self.lng = latlong
+        self.vector = self.compute_vector()
+
+    def compute_vector(self):
+        """ Express lat/long as a cartesian vector. """
+        rho = 1  # Assuming spherical planet
+        phi = radians(90 - self.lat)
+        theta = radians(self.lng)
+
+        x = rho * sin(phi) * cos(theta)
+        y = rho * sin(phi) * sin(theta)
+        z = rho * cos(phi)
+        return x, y, z
 
 
 def create_atlas():
@@ -32,8 +43,22 @@ def create_atlas():
 def get_user_inputs():
     # TODO: actually get user input
     input1 = 'Los Angeles'
-    input2 = 'London'
+    input2 = 'Seattle'
     return input1, input2
+
+
+def magnitude(x, y, z):
+    return sqrt(x**2 + y**2 + z**2)
+
+
+def compute_angle(cities):
+    city1, city2 = cities
+    x1, y1, z1 = city1.vector
+    x2, y2, z2 = city2.vector
+    mag1 = magnitude(x1, y1, z1)
+    mag2 = magnitude(x2, y2, z2)
+    angle = acos(x1*x2 + y1*y2 + z1*z2) / (mag1 * mag2)
+    return floor(degrees(angle))
 
 
 def main():
@@ -44,14 +69,15 @@ def main():
         try:
             atlas[city.user_input]
             city.name = city.user_input
-            city.lat, city.lng = atlas[city.name]
-            print("Found {} at ({}, {})".format(city.name, city.lat, city.lng))
-            city.compute_sph_vector()
-            print(city.phi, city.theta)
+            city.add_geo(atlas[city.name])
+            print("Found {} in atlas with lat/long ({}, {})"
+                  .format(city.name, city.lat, city.lng))
         except KeyError:
-            print("City {} not found in city list".format(city.user_input))
+            print("ERROR: {} not found in city list".format(city.user_input))
+            sys.exit(1)
 
-    # compute the angle between them
+    angle = compute_angle(cities)
+    print("The angle is {}".format(angle))
 
 
 if __name__ == '__main__':
