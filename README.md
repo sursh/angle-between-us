@@ -1,6 +1,6 @@
 # The angle between us
 
-We're all walking around on Earth. Which is a planet. A planet that is not flat. :globe:
+We're all walking around on Earth. Which is a planet. A planet that is not flat. 🌎
 
 When we're in the same place, our bodies are roughly parallel. But as we go farther and farther apart we start pointing in different directions. And when we go all the way around the globe, people are pointing the other way! 
 
