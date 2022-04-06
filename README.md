@@ -2,7 +2,7 @@
 
 We're all walking around on Earth. Which is a planet. A planet that is not flat. 
 
-When we're in the same place, our bodies are roughly parallel. But as we go farther and farther apart we start pointing in different directions. And when we go all the way around the globe, peolpe are pointing the other way! 
+When we're in the same place, our bodies are roughly parallel. But as we go farther and farther apart we start pointing in different directions. And when we go all the way around the globe, people are pointing the other way! 
 
 This is a little project to compute the angles between people at different points on earth, to bring us in touch with the geometry of our home planet. 
 
