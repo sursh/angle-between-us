@@ -9,7 +9,9 @@ This is a little project to compute the angles between people at different point
 # Example Outputs
 
 The angle between Los Angeles and Chicago is 25 degrees
+
 The angle between Los Angeles and London is 78 degrees
+
 The angle between Los Angeles and Mumbai is 125 degrees
 
 # TODO
