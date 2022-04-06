@@ -43,7 +43,7 @@ def create_atlas():
 def get_user_inputs():
     # TODO: actually get user input
     input1 = 'Los Angeles'
-    input2 = 'Seattle'
+    input2 = 'Mumbai'
     return input1, input2
 
 
@@ -77,7 +77,8 @@ def main():
             sys.exit(1)
 
     angle = compute_angle(cities)
-    print("The angle is {} degrees".format(angle))
+    print("The angle between {} and {} is {} degrees"
+          .format(cities[0].name, cities[1].name, angle))
 
 
 if __name__ == '__main__':
