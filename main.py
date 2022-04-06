@@ -77,7 +77,7 @@ def main():
             sys.exit(1)
 
     angle = compute_angle(cities)
-    print("The angle is {}".format(angle))
+    print("The angle is {} degrees".format(angle))
 
 
 if __name__ == '__main__':
