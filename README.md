@@ -6,6 +6,12 @@ When we're in the same place, our bodies are roughly parallel. But as we go fart
 
 This is a little project to compute the angles between people at different points on earth, to bring us in touch with the geometry of our home planet. 
 
+# Example Outputs
+
+The angle between Los Angeles and Chicago is 25 degrees
+The angle between Los Angeles and London is 78 degrees
+The angle between Los Angeles and Mumbai is 125 degrees
+
 # TODO
 
 - [x] Find lat/lon info for major cities
