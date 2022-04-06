@@ -8,6 +8,12 @@ class City():
     def __init__(self, user_input):
         self.user_input = user_input
 
+    def compute_sph_vector(self):
+        """ Express lat/long as spherical coordinates. """
+        # We're assuming a spherical earth, so don't need rho
+        self.phi = 90 - self.lat
+        self.theta = self.lng
+
 
 def create_atlas():
     """ Get geo data and standardize it into a dict """
@@ -40,10 +46,12 @@ def main():
             city.name = city.user_input
             city.lat, city.lng = atlas[city.name]
             print("Found {} at ({}, {})".format(city.name, city.lat, city.lng))
+            city.compute_sph_vector()
+            print(city.phi, city.theta)
         except KeyError:
             print("City {} not found in city list".format(city.user_input))
 
-        # maybe do angle things
+    # compute the angle between them
 
 
 if __name__ == '__main__':
